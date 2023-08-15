@@ -1,1 +1,1 @@
-# pronin-test-react
+# Dropdown component, test task
