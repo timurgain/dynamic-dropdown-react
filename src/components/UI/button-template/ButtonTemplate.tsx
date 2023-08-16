@@ -1,8 +1,10 @@
-import React from "react";
+import React from 'react';
 import './ButtonTemplate.css';
 
-export function ButtonTemplate(): JSX.Element {
-  return (
-    <button className="button"/>
-  )
+type ButtonProps = {
+  onClick: () => void;
+};
+
+export function ButtonTemplate({ onClick }: ButtonProps): JSX.Element {
+  return <button className="button" onClick={onClick} />;
 }
