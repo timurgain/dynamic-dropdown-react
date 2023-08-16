@@ -1,6 +1,6 @@
 import React from 'react';
-import { DropdownDemo } from '../dropdown-demo/DropdownDemo';
+import { DropdownDemoPage } from '../../pages/DropdownDemo/DropdownDemoPage';
 
 export function App(): JSX.Element {
-  return <DropdownDemo />;
+  return <DropdownDemoPage />;
 }
