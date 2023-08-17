@@ -3,12 +3,26 @@ import './DropdownDemoPage.css';
 import { Dropdown } from '../../components/dropdown/Dropdown';
 import { TriggerElementTemplate as Trigger } from '../../components/UI/trigger-element-template/TriggerElementTemplate';
 import { menuItems } from '../../utils/constants';
+import { useDropdownClose } from '../../hooks/useDropbownClose';
 
 export function DropdownDemoPage(): React.JSX.Element {
   const [openOne, SetOpenOne] = React.useState<boolean>(false);
   const [openTwo, SetOpenTwo] = React.useState<boolean>(false);
   const [openThree, SetOpenThree] = React.useState<boolean>(false);
   const [openFour, SetOpenFour] = React.useState<boolean>(false);
+
+  const isAnyOpen = openOne || openTwo || openThree || openFour;
+
+  function closeAll() {
+    SetOpenOne(false);
+    SetOpenTwo(false);
+    SetOpenThree(false);
+    SetOpenFour(false);
+  }
+
+  const { escClose, clickClose } = useDropdownClose(isAnyOpen, closeAll);
+  React.useEffect(escClose, [isAnyOpen, escClose]);
+  React.useEffect(clickClose, [isAnyOpen, clickClose]);
 
   function handleClickOne() {
     SetOpenOne(!openOne);
@@ -44,25 +58,25 @@ export function DropdownDemoPage(): React.JSX.Element {
         <Dropdown
           items={menuItems}
           triggerComponent={<Trigger />}
-          tiggerAction={handleClickOne}
+          triggerAction={handleClickOne}
           open={openOne}
         />
         <Dropdown
           items={menuItems}
           triggerComponent={<Trigger />}
-          tiggerAction={handleClickTwo}
+          triggerAction={handleClickTwo}
           open={openTwo}
         />
         <Dropdown
           items={menuItems}
           triggerComponent={<Trigger />}
-          tiggerAction={handleClickThree}
+          triggerAction={handleClickThree}
           open={openThree}
         />
         <Dropdown
           items={menuItems}
           triggerComponent={<Trigger />}
-          tiggerAction={handleClickFour}
+          triggerAction={handleClickFour}
           open={openFour}
         />
       </section>

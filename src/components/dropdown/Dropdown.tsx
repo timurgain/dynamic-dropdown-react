@@ -11,14 +11,14 @@ export type ItemMenu = {
 type DropdownProps = {
   items: ItemMenu[];
   triggerComponent: React.ReactNode;
-  tiggerAction?: () => void;
+  triggerAction?: () => void;
   open: boolean;
 };
 
 export function Dropdown({
   items,
   triggerComponent,
-  tiggerAction,
+  triggerAction,
   open,
 }: DropdownProps): React.JSX.Element {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -47,8 +47,8 @@ export function Dropdown({
   }
 
   function handleClick() {
-    if (tiggerAction) {
-      tiggerAction();
+    if (triggerAction) {
+      triggerAction();
     } else {
       setIsOpen(!isOpen);
     }
