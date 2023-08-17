@@ -1,13 +1,29 @@
 .dropdown {
-  /* position: relative; */
   display: flex;
   flex-direction: column-reverse;
 }
 
 .dropdown__menu {
   position: absolute;
+  z-index: 10;
 }
 
 .dropdown__menu_down-right {
   top: 40px;
+  left: 0;
+}
+
+.dropdown__menu_down-left {
+  top: 40px;
+  right: 0;
+}
+
+.dropdown__menu_up-right {
+  bottom: 40px;
+  left: 0;
+}
+
+.dropdown__menu_up-left {
+  bottom: 40px;
+  right: 0;
 }

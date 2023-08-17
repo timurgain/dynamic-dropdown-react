@@ -13,29 +13,42 @@ type DropdownProps = {
   items: ItemMenu[];
 };
 
-export function Dropdown({ items }: DropdownProps): JSX.Element {
-  const [isOpen, setIsOpen] = React.useState(false);
+export function Dropdown({ items }: DropdownProps): React.JSX.Element {
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
 
-  function handleClick() {
-    setIsOpen(!isOpen);
+  function getOpenDirection(): string[] {
+    if (buttonRef.current) {
+      const { top, bottom, left, right } =
+        buttonRef.current.getBoundingClientRect();
+      const openX = left >= window.innerWidth - right ? 'left' : 'right';
+      const openY = top >= window.innerHeight - bottom ? 'up' : 'down';
+      return [openY, openX];
+    }
+    return [];
   }
 
-  function getClass() {
+  function getClass(): string {
+    const [openY, openX] = getOpenDirection();
     const cls = ['dropdown__menu'];
-
-    cls.push('dropdown__menu_down-right');
-
+    if (openX && openY) {
+      cls.push(`dropdown__menu_${openY}-${openX}`);
+    }
     return cls.join(' ');
+  }
+
+  function handleClick(): void {
+    setIsOpen(!isOpen);
   }
 
   return (
     <div className="dropdown">
-      <Button onClick={handleClick} />
+      <Button buttonRef={buttonRef} onClick={handleClick} />
 
       {isOpen && (
-        <div className={getClass()}>
+        <nav className={getClass()}>
           <Menu items={items} />
-        </div>
+        </nav>
       )}
     </div>
   );

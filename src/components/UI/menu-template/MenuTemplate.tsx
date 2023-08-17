@@ -7,18 +7,16 @@ type MenuPropsType = {
   items: ItemMenu[];
 };
 
-export function MenuTemplate({ items }: MenuPropsType): JSX.Element {
+export function MenuTemplate({ items }: MenuPropsType): React.JSX.Element {
   return (
-    <nav>
-      <ul className="menu">
-        {items.map((item) => {
-          return (
-            <li key={item.id}>
-              <Item title={item.title} iconPath={item.iconPath} />
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <ul className="menu">
+      {items.map((item) => {
+        return (
+          <li key={item.id}>
+            <Item title={item.title} iconPath={item.iconPath} />
+          </li>
+        );
+      })}
+    </ul>
   );
 }

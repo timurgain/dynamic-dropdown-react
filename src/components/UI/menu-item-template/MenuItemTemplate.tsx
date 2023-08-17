@@ -6,7 +6,10 @@ type ItemProps = {
   iconPath: string;
 };
 
-export function MenuItemTemplate({ title, iconPath }: ItemProps): JSX.Element {
+export function MenuItemTemplate({
+  title,
+  iconPath,
+}: ItemProps): React.JSX.Element {
   return (
     <div className="item">
       <span className="item__title">{title}</span>
