@@ -1,4 +1,4 @@
-.button {
+.trigger-element {
   background-color: rgba(247 247 250 / 100%);
   background-image: url('../../../assets/more-actions.svg');
   transform: rotate(90deg);
@@ -13,6 +13,6 @@
   transition: opacity 0.2s linear;
 }
 
-.button:hover {
+.trigger-element:hover {
   opacity: 0.6;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Dropdown.css';
-import { ButtonTemplate as Button } from '../UI/button-template/ButtonTemplate';
 import { MenuTemplate as Menu } from '../UI/menu-template/MenuTemplate';
 
 export type ItemMenu = {
@@ -11,16 +10,26 @@ export type ItemMenu = {
 
 type DropdownProps = {
   items: ItemMenu[];
+  triggerComponent: React.ReactNode;
+  tiggerAction?: () => void;
+  open: boolean;
 };
 
-export function Dropdown({ items }: DropdownProps): React.JSX.Element {
+export function Dropdown({
+  items,
+  triggerComponent,
+  tiggerAction,
+  open,
+}: DropdownProps): React.JSX.Element {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
 
-  function getOpenDirection(): string[] {
-    if (buttonRef.current) {
+  React.useEffect(() => setIsOpen(open), [open]);
+
+  function getOpenDirection() {
+    if (triggerRef.current) {
       const { top, bottom, left, right } =
-        buttonRef.current.getBoundingClientRect();
+        triggerRef.current.getBoundingClientRect();
       const openX = left >= window.innerWidth - right ? 'left' : 'right';
       const openY = top >= window.innerHeight - bottom ? 'up' : 'down';
       return [openY, openX];
@@ -28,7 +37,7 @@ export function Dropdown({ items }: DropdownProps): React.JSX.Element {
     return [];
   }
 
-  function getClass(): string {
+  function getClass() {
     const [openY, openX] = getOpenDirection();
     const cls = ['dropdown__menu'];
     if (openX && openY) {
@@ -37,13 +46,23 @@ export function Dropdown({ items }: DropdownProps): React.JSX.Element {
     return cls.join(' ');
   }
 
-  function handleClick(): void {
-    setIsOpen(!isOpen);
+  function handleClick() {
+    if (tiggerAction) {
+      tiggerAction();
+    } else {
+      setIsOpen(!isOpen);
+    }
   }
 
   return (
     <div className="dropdown">
-      <Button buttonRef={buttonRef} onClick={handleClick} />
+      <button
+        className="dropdown__trigger"
+        onClick={handleClick}
+        ref={triggerRef}
+      >
+        {triggerComponent}
+      </button>
 
       {isOpen && (
         <nav className={getClass()}>

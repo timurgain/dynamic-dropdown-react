@@ -3,6 +3,11 @@
   flex-direction: column-reverse;
 }
 
+.dropdown__trigger {
+  background-color: rgba(255 255 255 / 0%);
+  border: none;
+}
+
 .dropdown__menu {
   position: absolute;
   z-index: 10;
