@@ -7,15 +7,15 @@ import iconFourPath from '../../assets/icon-grid.svg';
 export function MainPage(): React.JSX.Element {
   return (
     <main className="main-page">
-      <h1 className="main-page__title">Демо кастомный Dropdown</h1>
+      <h1 className="main-page__title">Custom Dropdown demo</h1>
       <section className="main-page__section">
         <Link className="main-page__link" to="/three">
           <img className="item__img" src={iconTreePath} alt="Icon" />
-          <span>Три компонента</span>
+          <span>Three in a row</span>
         </Link>
         <Link className="main-page__link" to="/four">
           <img className="item__img" src={iconFourPath} alt="Icon" />
-          <span>Четыре компонента</span>
+          <span>Four in corners</span>
         </Link>
       </section>
     </main>

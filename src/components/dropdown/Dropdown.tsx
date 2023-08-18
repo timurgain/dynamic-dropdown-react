@@ -91,16 +91,11 @@ export function Dropdown({
 
     function enoughSpace() {
       if (menuRect && triggerRect) {
-        const { width: menuWidth, height: menuRight } = menuRect;
-        const { width: triggerWidth, height: triggerHeight } = triggerRect;
-        const widthOk = triggerWidth + menuWidth < screenWidth ? true : false;
-        const heightOk =
-          triggerHeight + menuRight < screenHeight ? true : false;
-
-        // console.log('widthOk', triggerWidth + menuWidth, '<', screenWidth, '=', widthOk)
-        // console.log('heightOk', triggerHeight + menuRight, '<', screenHeight, '=', heightOk)
-
-        if (widthOk && heightOk) {
+        if (
+          Object.values(menuRect).every((dimension) => dimension > 0) &&
+          menuRect.height + triggerRect.height < screenHeight &&
+          menuRect.width < screenWidth
+        ) {
           return true;
         }
       }

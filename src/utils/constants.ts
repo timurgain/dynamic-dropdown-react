@@ -18,8 +18,13 @@ export const menuItems = [
     id: 1,
     action: print,
     iconPath: sharePath,
-    title: 'Поделиться в социальных сетях',
+    title: 'Share on your social media platforms',
   },
-  { id: 2, action: print, iconPath: editPath, title: 'Редактировать страницу' },
-  { id: 3, action: print, iconPath: deletePath, title: 'Удалить страницу' },
+  {
+    id: 2,
+    action: print,
+    iconPath: editPath,
+    title: 'Edit the latest content',
+  },
+  { id: 3, action: print, iconPath: deletePath, title: 'Remove the page' },
 ];
