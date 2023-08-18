@@ -9,7 +9,7 @@ export function App(): React.JSX.Element {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/three" element={<ThreeDropdownsDemoPage />} />
-      <Route path="four" element={<FourDropdownsDemoPage />} />
+      <Route path="/four" element={<FourDropdownsDemoPage />} />
       <Route path="*" element={<div>404</div>} />
     </Routes>
   );
