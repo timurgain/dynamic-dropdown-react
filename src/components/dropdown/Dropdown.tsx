@@ -1,12 +1,7 @@
 import React from 'react';
 import './Dropdown.css';
 import { MenuTemplate as Menu } from '../UI/menu-template/MenuTemplate';
-
-export type ItemMenu = {
-  id: number;
-  iconPath: string;
-  title: string;
-};
+import type { ItemMenu } from '../../utils/constants';
 
 type DropdownProps = {
   items: ItemMenu[];
@@ -46,7 +41,7 @@ export function Dropdown({
     return cls.join(' ');
   }
 
-  function handleClick() {
+  function handleOpenClose() {
     if (triggerAction) {
       triggerAction();
     } else {
@@ -58,7 +53,7 @@ export function Dropdown({
     <div className="dropdown">
       <button
         className="dropdown__trigger"
-        onClick={handleClick}
+        onClick={handleOpenClose}
         ref={triggerRef}
       >
         {triggerComponent}
@@ -66,7 +61,7 @@ export function Dropdown({
 
       {isOpen && (
         <nav className={getClass()}>
-          <Menu items={items} />
+          <Menu items={items} closeMenu={() => handleOpenClose()} />
         </nav>
       )}
     </div>

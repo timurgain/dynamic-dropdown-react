@@ -1,19 +1,26 @@
 import React from 'react';
 import './MenuItemTemplate.css';
+import type { ItemMenu } from '../../../utils/constants';
 
-type ItemProps = {
-  title: string;
-  iconPath: string;
+type MenuItemProps = ItemMenu & {
+  closeMenu: () => void;
 };
 
 export function MenuItemTemplate({
   title,
   iconPath,
-}: ItemProps): React.JSX.Element {
+  action,
+  closeMenu,
+}: MenuItemProps): React.JSX.Element {
+  function handleClick() {
+    action(title);
+    closeMenu();
+  }
+
   return (
-    <div className="item">
+    <button className="item" onClick={handleClick}>
       <span className="item__title">{title}</span>
       <img className="item__img" src={iconPath} alt="Icon" />
-    </div>
+    </button>
   );
 }

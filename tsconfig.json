@@ -7,14 +7,15 @@
     "skipLibCheck": true,
 
     /* Aliases */
-    "baseUrl": ".",
-    "paths": {
-      "src/*": ["src/*"],
-      "assets/*": ["src/assets/*"],
-      "components/*": ["src/components/*"],
-      "pages/*": ["src/pages/*"],
-      "utils/*": ["src/utils/*"]
-    },
+    // "baseUrl": ".",
+    // "paths": {
+    //   "src/*": ["src/*"],
+    //   "assets/*": ["src/assets/*"],
+    //   "components/*": ["src/components/*"],
+    //   "pages/*": ["src/pages/*"],
+    //   "utils/*": ["src/utils/*"],
+    //   "hooks/*": ["src/hooks/*"]
+    // },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
