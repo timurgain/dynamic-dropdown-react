@@ -33,3 +33,7 @@
   bottom: 40px;
   right: 0;
 }
+
+.dropdown__menu_hidden {
+  visibility: hidden;
+}
