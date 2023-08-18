@@ -3,6 +3,7 @@
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: rgba(50 50 50 / 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
