@@ -1,4 +1,8 @@
-export function useDropdownClose(isOpen: boolean, setClose: () => void) {
+export function useDropdownClose(
+  isOpen: boolean,
+  setClose: () => void,
+  closeClassList: string[],
+) {
   function escClose() {
     function handleEscClose(evt: KeyboardEvent) {
       if (evt.key === 'Escape') {
@@ -18,7 +22,7 @@ export function useDropdownClose(isOpen: boolean, setClose: () => void) {
     function handleClickClose(evt: MouseEvent) {
       const target = evt.target as HTMLElement;
 
-      const isClosing = ['main', 'main__section'].some((cls) =>
+      const isClosing = closeClassList.some((cls) =>
         Array.from(target.classList).includes(cls),
       );
       if (isClosing) {
