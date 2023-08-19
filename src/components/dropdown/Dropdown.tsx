@@ -19,9 +19,17 @@ export function Dropdown({
   // className state
   const [menuClass, setMenuClass] = React.useState<string>('dropdown__menu');
 
-  // External open-close control if needed
+  // Open-close control
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   React.useEffect(() => setIsOpen(open), [open]);
+
+  function handleOpenClose() {
+    if (triggerAction) {
+      triggerAction();
+    } else {
+      setIsOpen(!isOpen);
+    }
+  }
 
   // Screen dimensions
   const [screenWidth, setScreenWidth] = React.useState<number>(0);
@@ -59,6 +67,10 @@ export function Dropdown({
       setMenuRect({ top, bottom, left, right, width, height });
     }
   }
+  // Set menu dimensions on open
+  React.useEffect(() => {
+    calcMenuRect();
+  }, [isOpen]);
 
   // Listen to scroll and resize then Set dimensions
   React.useEffect(() => {
@@ -118,15 +130,6 @@ export function Dropdown({
       setMenuClass(getClass());
     }
   }, [triggerRect, menuRect, screenWidth, screenHeight]);
-
-  // Open/Close handler
-  function handleOpenClose() {
-    if (triggerAction) {
-      triggerAction();
-    } else {
-      setIsOpen(!isOpen);
-    }
-  }
 
   return (
     <div className="dropdown">
